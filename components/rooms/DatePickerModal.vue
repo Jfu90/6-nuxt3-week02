@@ -1,13 +1,15 @@
 <script setup>
 import { useScreens } from 'vue-screen-utils';
 
-import Modal from 'bootstrap/js/dist/modal';
+// import Modal from 'bootstrap/js/dist/modal';
 // import { Icon } from '@iconify/vue';
 
 const modal = ref(null);
 
 onMounted(() => {
-  modal.value = new Modal(document.getElementById('dateModal'));
+  modal.value = useNuxtApp().$modal.getOrCreateInstance(
+    document.getElementById('dateModal')
+  );
 });
 
 const openModal = () => {

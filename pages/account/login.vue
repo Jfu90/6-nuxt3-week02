@@ -1,6 +1,4 @@
-<script setup>
-const router = useRouter();
-</script>
+<script setup></script>
 
 <template>
   <div class="px-5 px-md-0">
@@ -58,7 +56,7 @@ const router = useRouter();
       <button
         class="btn btn-primary-100 w-100 py-4 text-neutral-0 fw-bold"
         type="button"
-        @click="router.push('/')"
+        @click="navigateTo('/')"
       >
         會員登入
       </button>

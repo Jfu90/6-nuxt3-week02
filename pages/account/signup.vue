@@ -1,6 +1,6 @@
 <script setup>
 // import { Icon } from '@iconify/vue';
-const router = useRouter();
+
 const isEmailAndPasswordValid = ref(false);
 </script>
 
@@ -187,7 +187,7 @@ const isEmailAndPasswordValid = ref(false);
         <button
           class="btn btn-primary-100 w-100 py-4 text-neutral-0 fw-bold"
           type="button"
-          @click="router.push('/')"
+          @click="navigateTo('/')"
         >
           完成註冊
         </button>
