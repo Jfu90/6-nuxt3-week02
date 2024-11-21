@@ -1,6 +1,5 @@
 <script setup>
 // import { Icon } from '@iconify/vue';
-
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
@@ -22,8 +21,8 @@ const roomImages = computed(() => {
   const result = rooms.reduce((acc, roomId) => {
     acc[`room${roomId.toUpperCase()}`] = nums.reduce((obj, num) => {
       obj[num] = {
-        desktop: importImage(`../assets/images/room-${roomId}-${num}.png`),
-        mobile: importImage(`../assets/images/room-${roomId}-sm-${num}.png`),
+        desktop: importImage(`./assets/images/room-${roomId}-${num}.png`),
+        mobile: importImage(`./assets/images/room-${roomId}-sm-${num}.png`),
       };
       return obj;
     }, {});
