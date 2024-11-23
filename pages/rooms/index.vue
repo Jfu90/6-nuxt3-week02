@@ -2,17 +2,19 @@
 // import { Icon } from '@iconify/vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { useAssets } from '~/composables/notAuto/useAssets';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const modules = ref([Autoplay, Navigation, Pagination]);
+const {getImageUrl} = useAssets()
 
-const importImage = (url) => {
-  const image = new URL(url, import.meta.url);
-  return image.href;
-};
+// const importImage = (url) => {
+//   const image = new URL(url, import.meta.url);
+//   return image.href;
+// };
 
 const roomImages = computed(() => {
   const rooms = ['a', 'b', 'c', 'd'];
@@ -21,8 +23,10 @@ const roomImages = computed(() => {
   const result = rooms.reduce((acc, roomId) => {
     acc[`room${roomId.toUpperCase()}`] = nums.reduce((obj, num) => {
       obj[num] = {
-        desktop: importImage(`./assets/images/room-${roomId}-${num}.png`),
-        mobile: importImage(`./assets/images/room-${roomId}-sm-${num}.png`),
+        // desktop: importImage(`./assets/images/room-${roomId}-${num}.png`),
+        // mobile: importImage(`./assets/images/room-${roomId}-sm-${num}.png`),
+        desktop: `room-${roomId}-${num}.png`,
+        mobile: `room-${roomId}-sm-${num}.png`,
       };
       return obj;
     }, {});
@@ -102,12 +106,12 @@ const roomImages = computed(() => {
                   <swiper-slide v-for="(num, index) in 5" :key="index">
                     <picture>
                       <source
-                        :srcset="roomImages.roomA[num].desktop"
+                        :srcset="getImageUrl(roomImages.roomA[num].desktop)"
                         media="(min-width: 768px)"
                       />
                       <img
                         class="w-100 object-fit-cover"
-                        :src="roomImages.roomA[num].mobile"
+                        :src="getImageUrl(roomImages.roomA[num].mobile)"
                         loading="lazy"
                         :alt="`room-a-${num}`"
                       />
@@ -193,12 +197,12 @@ const roomImages = computed(() => {
                   <swiper-slide v-for="(num, index) in 5" :key="index">
                     <picture>
                       <source
-                        :srcset="roomImages.roomB[num].desktop"
+                        :srcset="getImageUrl(roomImages.roomB[num].desktop)"
                         media="(min-width: 768px)"
                       />
                       <img
                         class="w-100 object-fit-cover"
-                        :src="roomImages.roomB[num].mobile"
+                        :src="getImageUrl(roomImages.roomB[num].mobile)"
                         loading="lazy"
                         :alt="`room-b-${num}`"
                       />
@@ -284,12 +288,12 @@ const roomImages = computed(() => {
                   <swiper-slide v-for="(num, index) in 5" :key="index">
                     <picture>
                       <source
-                        :srcset="roomImages.roomC[num].desktop"
+                        :srcset="getImageUrl(roomImages.roomC[num].desktop)"
                         media="(min-width: 768px)"
                       />
                       <img
                         class="w-100 object-fit-cover"
-                        :src="roomImages.roomC[num].mobile"
+                        :src="getImageUrl(roomImages.roomC[num].mobile)"
                         loading="lazy"
                         :alt="`room-c-${num}`"
                       />
@@ -375,12 +379,12 @@ const roomImages = computed(() => {
                   <swiper-slide v-for="(num, index) in 5" :key="index">
                     <picture>
                       <source
-                        :srcset="roomImages.roomD[num].desktop"
+                        :srcset="getImageUrl(roomImages.roomD[num].desktop)"
                         media="(min-width: 768px)"
                       />
                       <img
                         class="w-100 object-fit-cover"
-                        :src="roomImages.roomD[num].mobile"
+                        :src="getImageUrl(roomImages.roomD[num].mobile)"
                         loading="lazy"
                         :alt="`room-d-${num}`"
                       />
